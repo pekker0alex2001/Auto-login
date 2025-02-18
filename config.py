@@ -1,4 +1,4 @@
-url = "https://myURL"
+url = "https://myURL" #URl of the page
 
 myUser = "myser" #Username to be used
 myPassword = "myPassword" #password to be used
