@@ -6,7 +6,7 @@ from selenium.webdriver.common.by import By
 
 from config import url, myUser, myPassword, UpdateTime, LoadTime #import variables from config file
 
-UpdateTimes = UpdateTime / 3600 #Convert Update time to seconds
+UpdateTimes = UpdateTime * 3600 #Convert Update time to seconds
 LoadTimes = LoadTime / 1000 #Convert Update time to seconds
 
 while True: #Main loop
