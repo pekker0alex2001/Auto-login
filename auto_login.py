@@ -4,14 +4,25 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
-from config import url, myUser, myPassword, UpdateTime, LoadTime #import variables from config file
+from config import myUser, myPassword, UpdateTime #import variables from config file
+
+if (myUser == "myuser") or (myUser == ""): #Validate username
+    print("Invalid Username detected")
+    exit()
+
+if (myPassword == "myPassword") or (myPassword == ""): #Validate password
+    print("Invalid password detected")
+    exit()
+
+if UpdateTime <= 0: #Validate update time
+    print("Invalid Update time detected")
+    exit()
 
 UpdateTimes = UpdateTime * 3600 #Convert Update time to seconds
-LoadTimes = LoadTime / 1000 #Convert Update time to seconds
 
 while True: #Main loop
     driver = webdriver.Chrome() #initialise chrome as driver
-    driver.get(url) #load webpage
+    driver.get("https://ncore.pro/index.php") #load webpage
 
     field_user = driver.find_element(By.NAME, 'nev') #Locate username text field
     field_pw = driver.find_element(By.NAME, "pass") #Locate password text field
@@ -21,7 +32,7 @@ while True: #Main loop
     field_pw.send_keys(myPassword) #Write password
     field_login.click() #Click on login button
 
-    time.sleep(LoadTimes) #Wait one second to make sure the webpage is fully loaded
+    time.sleep(0.1)
 
     get_source = driver.page_source #copy the source code
     
